@@ -1,7 +1,17 @@
 .App {
   text-align: center;
 }
-
+body{
+  background-color: #D1F2FB!important;
+  
+}
+.homePage{
+  height: 100vh;
+}
+.navbar
+{
+    background-color: transparent;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
