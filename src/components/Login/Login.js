@@ -93,9 +93,13 @@ function Login() {
       .signInWithEmailAndPassword(user.email, user.password)
       .then((userCredential) => {
         // Signed in
-        var user = userCredential.user;
-        // ...
-        console.log("Signed In success", user.displayName);
+         var emailUser = userCredential.user;
+        // // ...
+        // console.log("Signed In success", user.displayName);
+        const newUserInfo = { ...user };
+      newUserInfo.name = emailUser.displayName;
+      newUserInfo.isSignedIn = true;
+      setUser(newUserInfo)
         history.replace(from);
       })
       .catch((error) => {
@@ -130,8 +134,9 @@ function Login() {
       setUser(newUserInfo);
     }
   };
-  const provider = new firebase.auth.GoogleAuthProvider();
+  
   const googleLogin = () => {
+    const provider = new firebase.auth.GoogleAuthProvider();
     firebase
       .auth()
       .signInWithPopup(provider)
@@ -142,9 +147,14 @@ function Login() {
         // This gives you a Google Access Token. You can use it to access the Google API.
         // var token = credential.accessToken;
         // The signed-in user info.
-        var user = result.user;
-        console.log(user);
-        history.replace(from);
+        var googleUser = result.user;
+        const newUserInfo = { ...user };
+      newUserInfo.name = googleUser.displayName;
+      newUserInfo.isSignedIn = true;
+
+      setUser(newUserInfo);
+      console.log(user.name)
+      history.replace(from);
         // ...
       })
       .catch((error) => {
