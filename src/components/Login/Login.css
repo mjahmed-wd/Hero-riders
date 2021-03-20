@@ -32,3 +32,8 @@ input::placeholder {
   -webkit-transform: translateY(-20px);
   transform: translateY(-20px);
 }
+button {
+  color: #ff5722;
+  background-color: transparent;
+  border-color: transparent;
+}

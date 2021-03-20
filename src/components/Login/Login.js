@@ -191,7 +191,7 @@ function Login() {
             )}
 
             <div className="d-flex justify-content-center p-2">
-              <button style={{ color: "#ff5722" }}>Forget Password?</button>
+              <button >Forget Password?</button>
             </div>
             <input
               type="submit"
@@ -203,15 +203,15 @@ function Login() {
               value={newUserStatus ? "Register" : "Login"}
             />
           </form>
-          <p className="pt-2">
+          {!newUserStatus && (<><p className="pt-2">
             Don't have an account?
             <button
               onClick={() => setNewUserStatus(!newUserStatus)}
-              style={{ color: "#ff5722" }}
+              
             >
               Create a new one.
             </button>
-          </p>
+          </p></>)}
         </div>
       </div>
       {/* google login */}
