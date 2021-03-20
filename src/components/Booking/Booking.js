@@ -1,12 +1,12 @@
-import React, { useContext, useState } from "react";
-import TextField from "@material-ui/core/TextField";
-import Autocomplete from "@material-ui/lab/Autocomplete";
+import React, { useState } from "react";
+// import TextField from "@material-ui/core/TextField";
+// import Autocomplete from "@material-ui/lab/Autocomplete";
 import "./Booking.css";
 import RoomIcon from "@material-ui/icons/Room";
 import FlightTakeoffIcon from "@material-ui/icons/FlightTakeoff";
-import { VehicleContext } from "../../App";
+// import { VehicleContext } from "../../App";
 import PricingInfo from "./PricingInfo";
-import { Divider } from "@material-ui/core";
+// import { Divider } from "@material-ui/core";
 import PlaceSelection from "./PlaceSelection";
 
 const destinations = [
@@ -20,7 +20,7 @@ const destinations = [
 ];
 
 const Booking = () => {
-  const [selectedVehicle, setSelectedVehicle] = useContext(VehicleContext);
+  // const [selectedVehicle, setSelectedVehicle] = useContext(VehicleContext);
   const [value, setValue] = useState(destinations[0]);
   const filterDestination = destinations.filter((des) => des !== value);
   const [toDestination, setToDestination] = useState(filterDestination[5]);
@@ -34,6 +34,7 @@ const Booking = () => {
           {vehicleAndPriceHiding === false && (
             <div id="booking-part">
               <PlaceSelection
+              key="1"
                 destinations={destinations}
                 value={value}
                 setValue={setValue}
@@ -41,6 +42,7 @@ const Booking = () => {
                 setInputValue={setInputValue}
               />
               <PlaceSelection
+              key="2"
                 destinations={filterDestination}
                 value={toDestination}
                 setValue={setToDestination}

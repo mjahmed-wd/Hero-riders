@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 
@@ -21,7 +21,6 @@ const placeSelection = (props) => {
           onInputChange={(event, newInputValue) => {
             setInputValue(newInputValue);
           }}
-          id="from-states-demo"
           options={destinations}
           renderInput={(params) => (
             <TextField {...params} label="From" variant="outlined" />

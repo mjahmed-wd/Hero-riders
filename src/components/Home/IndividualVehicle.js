@@ -4,7 +4,7 @@ import { VehicleContext } from "../../App";
 
 const IndividualVehicle = (props) => {
   let history = useHistory();
-    const [selectedVehicle, setSelectedVehicle] = useContext(VehicleContext);
+    const [setSelectedVehicle] = useContext(VehicleContext);
   const { name, image } = props.vehicle;
 const booking=()=>{
   setSelectedVehicle({name})

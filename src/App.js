@@ -25,7 +25,7 @@ function App() {
     photo: "",
   });
   return (
-    <VehicleContext.Provider value={[selectedVehicle, setSelectedVehicle]}>
+    <VehicleContext.Provider value={[setSelectedVehicle, selectedVehicle]}>
       <UserContext.Provider value={[user,setUser]}>
       <div className="homePage">
         <Router>
