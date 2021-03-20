@@ -3,19 +3,21 @@ import { useForm } from "react-hook-form";
 import firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from "./firebase.config.js";
-import { useEffect, useState } from "react";
-// import { Link } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { UserContext } from "../../App";
 
 function Login() {
-  const [user, setUser] = useState({
-    isSignedIn: false,
-    name: "",
-    email: "",
-    password: "",
-    givenPassword: "",
-    confirmPassword: "",
-    photo: "",
-  });
+  // const [user, setUser] = useState({
+  //   isSignedIn: false,
+  //   name: "",
+  //   email: "",
+  //   password: "",
+  //   givenPassword: "",
+  //   confirmPassword: "",
+  //   photo: "",
+  // });
+  const [user, setUser]=useContext(UserContext)
+  
   const handleSignOut = () => {
     firebase
       .auth()
@@ -40,7 +42,6 @@ function Login() {
     firebase.initializeApp(firebaseConfig);
   }
   const [newUserStatus, setNewUserStatus] = useState(false);
-  const signUp = () => {};
 
   const firebaseSignupWithEmail = (e) => {
     if (newUserStatus) {

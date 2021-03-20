@@ -9,11 +9,22 @@ import { createContext, useState } from "react";
 import Login from "./components/Login/Login";
 
 export const VehicleContext = createContext()
+export const UserContext = createContext()
 
 function App() {
   const [selectedVehicle, setSelectedVehicle] = useState("");
+  const [user, setUser] = useState({
+    isSignedIn: false,
+    name: "",
+    email: "",
+    password: "",
+    givenPassword: "",
+    confirmPassword: "",
+    photo: "",
+  });
   return (
     <VehicleContext.Provider value={[selectedVehicle, setSelectedVehicle]}>
+      <UserContext.Provider value={[user,setUser]}>
       <div className="homePage">
         <Router>
           <Container>
@@ -33,6 +44,7 @@ function App() {
           </Container>
         </Router>
       </div>
+      </UserContext.Provider>
     </VehicleContext.Provider>
   );
 }
