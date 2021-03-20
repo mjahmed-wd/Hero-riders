@@ -1,4 +1,3 @@
-// import logo from "./logo.svg";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./components/Header/Header";
@@ -10,8 +9,8 @@ import Login from "./components/Login/Login";
 import Booking from "./components/Booking/Booking";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
-export const VehicleContext = createContext()
-export const UserContext = createContext()
+export const VehicleContext = createContext();
+export const UserContext = createContext();
 
 function App() {
   const [selectedVehicle, setSelectedVehicle] = useState("");
@@ -26,29 +25,29 @@ function App() {
   });
   return (
     <VehicleContext.Provider value={[setSelectedVehicle, selectedVehicle]}>
-      <UserContext.Provider value={[user,setUser]}>
-      <div className="homePage">
-        <Router>
-          <Container>
-            <Header />
-            <Switch>
-              <Route exact path="/">
-                <Home />
-              </Route>
-              <Route path="/home">
-                <Home />
-              </Route>
-              <PrivateRoute path="/booking">
-                <Booking />
-              </PrivateRoute>
-              <Route path="/login">
-                <Login/>
-              </Route>
-              <Route path="*"></Route>
-            </Switch>
-          </Container>
-        </Router>
-      </div>
+      <UserContext.Provider value={[user, setUser]}>
+        <div className="homePage">
+          <Router>
+            <Container>
+              <Header />
+              <Switch>
+                <Route exact path="/">
+                  <Home />
+                </Route>
+                <Route path="/home">
+                  <Home />
+                </Route>
+                <PrivateRoute path="/booking">
+                  <Booking />
+                </PrivateRoute>
+                <Route path="/login">
+                  <Login />
+                </Route>
+                <Route path="*"></Route>
+              </Switch>
+            </Container>
+          </Router>
+        </div>
       </UserContext.Provider>
     </VehicleContext.Provider>
   );

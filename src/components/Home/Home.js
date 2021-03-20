@@ -1,6 +1,4 @@
-import React, {  useEffect, useState } from "react";
-// import { VehicleContext } from "../../App";
-// import "./Home.css"
+import React, { useEffect, useState } from "react";
 import vehicle from "../../FakeData/Vehicle/FakeVehicle.json";
 import IndividualVehicle from "./IndividualVehicle";
 
@@ -10,7 +8,7 @@ const Home = () => {
     setVehicles(vehicle);
     console.log(vehicles);
   }, [vehicles]);
-  
+
   return (
     <div className="center mt-5">
       <div className="card-group row row-cols-1 row-cols-md-4 g-4 padding-right allCard">

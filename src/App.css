@@ -1,16 +1,14 @@
 .App {
   text-align: center;
 }
-body{
-  background-color: #D1F2FB!important;
-  
+body {
+  background-color: #d1f2fb !important;
 }
-.homePage{
+.homePage {
   height: 100vh;
 }
-.navbar
-{
-    background-color: transparent;
+.navbar {
+  background-color: transparent;
 }
 .App-logo {
   height: 40vmin;
@@ -22,6 +20,7 @@ body{
     animation: App-logo-spin infinite 20s linear;
   }
 }
+
 
 .App-header {
   background-color: #282c34;

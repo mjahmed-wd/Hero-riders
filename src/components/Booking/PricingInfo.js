@@ -8,8 +8,8 @@ import { VehicleContext } from "../../App";
 import PeopleIcon from "@material-ui/icons/People";
 
 const PricingInfo = () => {
-  const [setSelectedVehicle,selectedVehicle] = useContext(VehicleContext);
-  
+  const [setSelectedVehicle, selectedVehicle] = useContext(VehicleContext);
+
   const [vehicleImage, setVehicleImage] = useState("");
   useEffect(() => {
     if (selectedVehicle.name === "Bike") {
@@ -26,7 +26,7 @@ const PricingInfo = () => {
       setVehicleImage(trainImg);
     }
   }, [selectedVehicle, vehicleImage]);
-  console.log(setSelectedVehicle)
+  console.log(setSelectedVehicle);
   return (
     <div className="mt-2">
       <div className="d-flex align-items-center justify-content-between p-3 my-auto bgLight">
