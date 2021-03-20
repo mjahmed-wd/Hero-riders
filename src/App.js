@@ -7,6 +7,8 @@ import Home from "./components/Home/Home";
 import { Container } from "react-bootstrap";
 import { createContext, useState } from "react";
 import Login from "./components/Login/Login";
+import Booking from "./components/Booking/Booking";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
 export const VehicleContext = createContext()
 export const UserContext = createContext()
@@ -36,6 +38,9 @@ function App() {
               <Route path="/home">
                 <Home />
               </Route>
+              <PrivateRoute path="/booking">
+                <Booking />
+              </PrivateRoute>
               <Route path="/login">
                 <Login/>
               </Route>

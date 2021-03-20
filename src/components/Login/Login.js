@@ -5,6 +5,7 @@ import "firebase/auth";
 import firebaseConfig from "./firebase.config.js";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../App";
+import { useHistory, useLocation } from "react-router";
 
 function Login() {
   // const [user, setUser] = useState({
@@ -16,7 +17,11 @@ function Login() {
   //   confirmPassword: "",
   //   photo: "",
   // });
+  let history = useHistory();
+  let location = useLocation();
+  let { from } = location.state || { from: { pathname: "/" } };
   const [user, setUser]=useContext(UserContext)
+  
   
   const handleSignOut = () => {
     firebase
@@ -62,6 +67,7 @@ function Login() {
             .then(function () {
               // Update successful.
               console.log(user.name, "success");
+              history.replace(from);
             })
             .catch(function (error) {
               // An error happened.
@@ -89,6 +95,7 @@ function Login() {
         var user = userCredential.user;
         // ...
         console.log("Signed In success", user.displayName);
+        history.replace(from);
       })
       .catch((error) => {
         var errorCode = error.code;
@@ -98,7 +105,6 @@ function Login() {
   let passwordNotification = false;
   const handleBlur = (e) => {
     if (newUserStatus && e.target.name === "password") {
-      debugger;
       const newUserInfo = { ...user };
       newUserInfo.givenPassword = e.target.value;
       setUser(newUserInfo);
@@ -136,6 +142,7 @@ function Login() {
         // The signed-in user info.
         var user = result.user;
         console.log(user);
+        history.replace(from);
         // ...
       })
       .catch((error) => {
