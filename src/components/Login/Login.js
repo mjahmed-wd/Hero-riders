@@ -40,9 +40,9 @@ function Login() {
   //     });
   // };
 
-  const handleLogOut= ()=>{
-    handleSignOut().then(res=>setUser(res))
-  } 
+  // const handleLogOut= ()=>{
+  //   handleSignOut().then(res=>setUser(res))
+  // } 
   const { register, handleSubmit, errors } = useForm();
   
   const [newUserStatus, setNewUserStatus] = useState(false);
