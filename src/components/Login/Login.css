@@ -37,3 +37,20 @@ button {
   background-color: transparent;
   border-color: transparent;
 }
+.googleLogin {
+  border: 1px solid green;
+  border-radius: 15px;
+  padding: 5px 0;
+  margin: auto 25%;
+}
+.googleLogin img {
+  width: 5%;
+}
+@media only screen and (max-width: 600px) {
+  .form {
+    margin: 5% 15%;
+  }
+  .googleLogin img {
+    width: 10%;
+  }
+}

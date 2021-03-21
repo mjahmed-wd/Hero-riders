@@ -7,6 +7,7 @@ import { useContext, useState } from "react";
 import { UserContext } from "../../App";
 import { useHistory, useLocation } from "react-router";
 import { firebaseInitialization } from "./SignOut";
+import googleLogo from "../../images/googleLogo.png"
 
 
 
@@ -224,7 +225,11 @@ function Login() {
       {/* google login */}
 
       <p>Or</p>
+      <div className="d-flex justify-content-center googleLogin">
+        <img src={googleLogo} alt=""/>
       <button onClick={() => googleLogin()}>Continue with Google</button>
+      </div>
+      
       <br />
       {/* <button onClick={() => handleLogOut()}>Signing Out</button> */}
     </div>

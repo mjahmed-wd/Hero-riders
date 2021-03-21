@@ -1,37 +1,30 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
+import {
+  KeyboardDatePicker,
+  MuiPickersUtilsProvider,
+} from "@material-ui/pickers";
+import DateFnsUtils from "@date-io/date-fns";
 
-const useStyles = makeStyles((theme) => ({
-  container: {
-    display: "flex",
-    flexWrap: "wrap",
-  },
-  textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
-    width: 200,
-  },
-}));
-
-const DatePicker = () => {
-  const classes = useStyles();
+const StaticDatePicker = (props) => {
+  const { selectedDate, handleDateChange } = props;
   return (
-    <>
-      <form className="mb-3" noValidate>
-        <TextField
-          id="datetime-local"
-          label="Travel Schedule"
-          type="datetime-local"
-          defaultValue="2017-05-24T10:30"
-          className={classes.textField}
-          InputLabelProps={{
-            shrink: true,
-          }}
+    <div className="pb-3">
+      <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        <KeyboardDatePicker
+         style={{ width: "100%" }}
+          autoOk
+          variant="inline"
+          inputVariant="outlined"
+          label="Pick Date"
+          format="MM/dd/yyyy"
+          value={selectedDate}
+          minDate={new Date()}
+          InputAdornmentProps={{ position: "start" }}
+          onChange={(date) => handleDateChange(date)}
         />
-      </form>
-    </>
+      </MuiPickersUtilsProvider>
+    </div>
   );
 };
 
-export default DatePicker;
+export default StaticDatePicker;

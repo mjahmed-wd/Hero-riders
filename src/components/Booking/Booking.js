@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import "./Booking.css";
 import RoomIcon from "@material-ui/icons/Room";
 import FlightTakeoffIcon from "@material-ui/icons/FlightTakeoff";
+import EventAvailableIcon from '@material-ui/icons/EventAvailable';
 import PricingInfo from "./PricingInfo";
 import PlaceSelection from "./PlaceSelection";
-// import GoogleMap from "../GoogleMap/GoogleMap";
 import DatePicker from "./DatePicker"
 import ReactGoogleMap from "../GoogleMap/ReactGoogleMap";
 
@@ -25,6 +25,7 @@ const Booking = () => {
   const [inputValue, setInputValue] = useState("");
   const [destinationInputValue, setDestinationInputValue] = useState("");
   const [vehicleAndPriceHiding, setVehicleAndPriceHiding] = useState(false);
+  const [selectedDate, handleDateChange] = useState(new Date());
   return (
     <div className="row">
       <div className="col-md-4 col-xs-12 bookingInfo p-4">
@@ -46,7 +47,7 @@ const Booking = () => {
               inputValue={destinationInputValue}
               setInputValue={setDestinationInputValue}
             />
-            <DatePicker/>
+            <DatePicker selectedDate={selectedDate} handleDateChange={handleDateChange}/>
             <button
               className="mb-2"
               onClick={() => setVehicleAndPriceHiding(true)}
@@ -70,12 +71,9 @@ const Booking = () => {
             <div className="destinationInformation">
               {value && (
                 <>
-                  <p>
-                    <RoomIcon /> From {value}
-                  </p>
-                  <p>
-                    <FlightTakeoffIcon /> To {toDestination}
-                  </p>
+                  <p><RoomIcon /> From {value}</p>
+                  <p><FlightTakeoffIcon /> To {toDestination}</p>
+                  <p><EventAvailableIcon /> On {selectedDate.toLocaleDateString()}</p>
                 </>
               )}
             </div>
