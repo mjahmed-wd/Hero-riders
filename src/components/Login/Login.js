@@ -6,7 +6,7 @@ import "firebase/auth";
 import { useContext, useState } from "react";
 import { UserContext } from "../../App";
 import { useHistory, useLocation } from "react-router";
-import { firebaseInitialization, handleSignOut } from "./SignOut";
+import { firebaseInitialization } from "./SignOut";
 
 
 
