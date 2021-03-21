@@ -22,18 +22,19 @@ input::placeholder {
 input:hover,
 input:focus,
 input:active:focus {
-  color: #ff5722;
+  color: #EFA522;
   outline: none;
-  border-bottom: 1px solid #ff5722;
+  border-bottom: 1px solid #EFA522;
 }
 input::placeholder {
-  color: #ff5722;
+  color: #EFA522;
   position: relative;
   -webkit-transform: translateY(-20px);
   transform: translateY(-20px);
 }
 button {
-  color: #ff5722;
+  color: #0074E1;
+  font-weight: 800;
   background-color: transparent;
   border-color: transparent;
 }

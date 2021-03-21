@@ -1,6 +1,6 @@
-# Hero Rider -- A Ride Sharing & Booking Service
+# Hero Riders -- A Ride Sharing & Booking Service
 
-This project is live at [Create React App](https://github.com/facebook/create-react-app).
+This project is live at [Hero Riders](https://hero-rider.netlify.app/).
 
 ## Vehicles
 1. Bike
@@ -9,6 +9,6 @@ This project is live at [Create React App](https://github.com/facebook/create-re
 4. Train
 
 ## Technology Used
-React
-HTML
-CSS
+- React
+- HTML
+- CSS

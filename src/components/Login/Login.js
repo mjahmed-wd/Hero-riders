@@ -7,20 +7,18 @@ import { useContext, useState } from "react";
 import { UserContext } from "../../App";
 import { useHistory, useLocation } from "react-router";
 import { firebaseInitialization } from "./SignOut";
-import googleLogo from "../../images/googleLogo.png"
-
-
+import googleLogo from "../../images/googleLogo.png";
 
 function Login() {
   let history = useHistory();
   let location = useLocation();
   let { from } = location.state || { from: { pathname: "/" } };
   const [user, setUser] = useContext(UserContext);
-// if (!firebase.apps.length) {
+  // if (!firebase.apps.length) {
   //   firebase.initializeApp(firebaseConfig);
   // }
-  firebaseInitialization()
-  
+  firebaseInitialization();
+
   // const handleSignOut = () => {
   //   firebase
   //     .auth()
@@ -43,9 +41,9 @@ function Login() {
 
   // const handleLogOut= ()=>{
   //   handleSignOut().then(res=>setUser(res))
-  // } 
+  // }
   const { register, handleSubmit, errors } = useForm();
-  
+
   const [newUserStatus, setNewUserStatus] = useState(false);
 
   const firebaseSignupWithEmail = (e) => {
@@ -67,7 +65,7 @@ function Login() {
             .then(function () {
               // Update successful.
               console.log(user.name, "success");
-             history.replace(from);
+              history.replace(from);
             })
             .catch(function (error) {
               // An error happened.
@@ -93,7 +91,7 @@ function Login() {
         newUserInfo.name = emailUser.displayName;
         newUserInfo.isSignedIn = true;
         setUser(newUserInfo);
-       history.replace(from);
+        history.replace(from);
       })
       .catch((error) => {
         var errorCode = error.code;
@@ -136,7 +134,7 @@ function Login() {
 
         setUser(newUserInfo);
         console.log(user.name);
-       history.replace(from);
+        history.replace(from);
         // ...
       })
       .catch((error) => {
@@ -176,7 +174,8 @@ function Login() {
               placeholder="Password"
               onBlur={handleBlur}
               ref={register({
-                required: true, pattern: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$/
+                required: true,
+                pattern: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$/,
               })}
             />
             {/* errors will return when field validation fails  */}
@@ -199,37 +198,38 @@ function Login() {
             )}
 
             <div className="d-flex justify-content-center p-2">
-              <button >Forget Password?</button>
+              <button>Forget Password?</button>
             </div>
             <input
               type="submit"
               style={{
-                backgroundColor: "tomato",
+                backgroundColor: "#EFA522",
                 color: "white",
                 width: "100%",
               }}
               value={newUserStatus ? "Register" : "Login"}
             />
           </form>
-          {!newUserStatus && (<><p className="pt-2">
-            Don't have an account?
-            <button
-              onClick={() => setNewUserStatus(!newUserStatus)}
-              
-            >
-              Create a new one.
-            </button>
-          </p></>)}
+          {!newUserStatus && (
+            <>
+              <p className="pt-2">
+                Don't have an account?
+                <button onClick={() => setNewUserStatus(!newUserStatus)}>
+                  Create a new one.
+                </button>
+              </p>
+            </>
+          )}
         </div>
       </div>
       {/* google login */}
 
       <p>Or</p>
       <div className="d-flex justify-content-center googleLogin">
-        <img src={googleLogo} alt=""/>
-      <button onClick={() => googleLogin()}>Continue with Google</button>
+        <img src={googleLogo} alt="" />
+        <button onClick={() => googleLogin()}>Continue with Google</button>
       </div>
-      
+
       <br />
       {/* <button onClick={() => handleLogOut()}>Signing Out</button> */}
     </div>

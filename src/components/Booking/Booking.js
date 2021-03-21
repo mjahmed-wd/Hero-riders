@@ -53,7 +53,7 @@ const Booking = () => {
               onClick={() => setVehicleAndPriceHiding(true)}
               style={{
                 color: "white",
-                backgroundColor: "tomato",
+                backgroundColor: "#EFA522",
                 borderRadius: "5px",
                 paddingLeft: "25px",
                 paddingRight: "25px",
