@@ -14,7 +14,6 @@ const PricingInfo = () => {
   useEffect(() => {
     if (selectedVehicle.name === "Bike") {
       setVehicleImage(bikeImg);
-      console.log(vehicleImage);
     }
     if (selectedVehicle.name === "Car") {
       setVehicleImage(carImg);

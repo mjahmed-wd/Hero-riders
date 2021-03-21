@@ -4,7 +4,9 @@ import RoomIcon from "@material-ui/icons/Room";
 import FlightTakeoffIcon from "@material-ui/icons/FlightTakeoff";
 import PricingInfo from "./PricingInfo";
 import PlaceSelection from "./PlaceSelection";
-import GoogleMap from "../GoogleMap/GoogleMap";
+// import GoogleMap from "../GoogleMap/GoogleMap";
+import DatePicker from "./DatePicker"
+import ReactGoogleMap from "../GoogleMap/ReactGoogleMap";
 
 const destinations = [
   "Sylhet",
@@ -21,7 +23,7 @@ const Booking = () => {
   const filterDestination = destinations.filter((des) => des !== value);
   const [toDestination, setToDestination] = useState(filterDestination[5]);
   const [inputValue, setInputValue] = useState("");
-  const [dInputValue, setDInputValue] = useState("");
+  const [destinationInputValue, setDestinationInputValue] = useState("");
   const [vehicleAndPriceHiding, setVehicleAndPriceHiding] = useState(false);
   return (
     <div className="row">
@@ -41,9 +43,10 @@ const Booking = () => {
               destinations={filterDestination}
               value={toDestination}
               setValue={setToDestination}
-              inputValue={dInputValue}
-              setInputValue={setDInputValue}
+              inputValue={destinationInputValue}
+              setInputValue={setDestinationInputValue}
             />
+            <DatePicker/>
             <button
               className="mb-2"
               onClick={() => setVehicleAndPriceHiding(true)}
@@ -86,7 +89,8 @@ const Booking = () => {
         )}
       </div>
       <div className="col-md-8 col-xs-12 p-4">
-        <GoogleMap />
+        <ReactGoogleMap destinationInputValue={destinationInputValue}/>
+        {/* <GoogleMap /> */}
       </div>
     </div>
   );

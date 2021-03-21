@@ -2,40 +2,49 @@ import "./Login.css";
 import { useForm } from "react-hook-form";
 import firebase from "firebase/app";
 import "firebase/auth";
-import firebaseConfig from "./firebase.config.js";
+// import firebaseConfig from "./firebase.config.js";
 import { useContext, useState } from "react";
 import { UserContext } from "../../App";
 import { useHistory, useLocation } from "react-router";
+import { firebaseInitialization, handleSignOut } from "./SignOut";
+
+
 
 function Login() {
   let history = useHistory();
   let location = useLocation();
   let { from } = location.state || { from: { pathname: "/" } };
   const [user, setUser] = useContext(UserContext);
+// if (!firebase.apps.length) {
+  //   firebase.initializeApp(firebaseConfig);
+  // }
+  firebaseInitialization()
+  
+  // const handleSignOut = () => {
+  //   firebase
+  //     .auth()
+  //     .signOut()
+  //     .then(() => {
+  //       // Sign-out successful.
+  //       setUser({
+  //         isSignedIn: false,
+  //         name: "",
+  //         email: "",
+  //         password: "",
+  //         photo: "",
+  //       });
+  //       console.log("Sign Out");
+  //     })
+  //     .catch((error) => {
+  //       // An error happened.
+  //     });
+  // };
 
-  const handleSignOut = () => {
-    firebase
-      .auth()
-      .signOut()
-      .then(() => {
-        // Sign-out successful.
-        setUser({
-          isSignedIn: false,
-          name: "",
-          email: "",
-          password: "",
-          photo: "",
-        });
-        console.log("Sign Out");
-      })
-      .catch((error) => {
-        // An error happened.
-      });
-  };
+  const handleLogOut= ()=>{
+    handleSignOut().then(res=>setUser(res))
+  } 
   const { register, handleSubmit, errors } = useForm();
-  if (!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig);
-  }
+  
   const [newUserStatus, setNewUserStatus] = useState(false);
 
   const firebaseSignupWithEmail = (e) => {
@@ -57,7 +66,7 @@ function Login() {
             .then(function () {
               // Update successful.
               console.log(user.name, "success");
-              history.replace(from);
+             history.replace(from);
             })
             .catch(function (error) {
               // An error happened.
@@ -83,7 +92,7 @@ function Login() {
         newUserInfo.name = emailUser.displayName;
         newUserInfo.isSignedIn = true;
         setUser(newUserInfo);
-        history.replace(from);
+       history.replace(from);
       })
       .catch((error) => {
         var errorCode = error.code;
@@ -126,7 +135,7 @@ function Login() {
 
         setUser(newUserInfo);
         console.log(user.name);
-        history.replace(from);
+       history.replace(from);
         // ...
       })
       .catch((error) => {
@@ -154,7 +163,6 @@ function Login() {
             <input
               name="email"
               placeholder="Email"
-              defaultValue="test@gmaol.ocm"
               onBlur={handleBlur}
               ref={register({ required: true })}
             />
@@ -165,10 +173,9 @@ function Login() {
               name="password"
               type="password"
               placeholder="Password"
-              defaultValue="12345678"
               onBlur={handleBlur}
               ref={register({
-                required: true,
+                required: true, pattern: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$/
               })}
             />
             {/* errors will return when field validation fails  */}
@@ -219,7 +226,7 @@ function Login() {
       <p>Or</p>
       <button onClick={() => googleLogin()}>Continue with Google</button>
       <br />
-      <button onClick={() => handleSignOut()}>Signing Out</button>
+      {/* <button onClick={() => handleLogOut()}>Signing Out</button> */}
     </div>
   );
 }

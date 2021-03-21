@@ -8,12 +8,13 @@ import { createContext, useState } from "react";
 import Login from "./components/Login/Login";
 import Booking from "./components/Booking/Booking";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import ReactGoogleMap from "./components/GoogleMap/ReactGoogleMap";
 
 export const VehicleContext = createContext();
 export const UserContext = createContext();
 
 function App() {
-  const [selectedVehicle, setSelectedVehicle] = useState("");
+  const [selectedVehicle, setSelectedVehicle] = useState({name:"Car"});
   const [user, setUser] = useState({
     isSignedIn: false,
     name: "",
@@ -42,6 +43,9 @@ function App() {
                 </PrivateRoute>
                 <Route path="/login">
                   <Login />
+                </Route>
+                <Route path="/map">
+                  <ReactGoogleMap />
                 </Route>
                 <Route path="*"></Route>
               </Switch>
